@@ -1,0 +1,18 @@
+Given an array of integers,find two numbers such that they add up to a specific target number.
+Input:numbers={2,7,11,15},target=26
+Output:index1=3,index2=4
+解决思路：定义一个hashmap，键为数组的整数，值为数组对应记录的下标index+1，循环遍历数组.
+public int[] twoSum(int[] numbers,target){
+   int[] result = new int[2];
+   Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+   for(int i=0;i<numbers.length;i++){
+       if(map.containsKey(target-numbers[i])){
+           result[1] = i+1;
+           result[0] = map.get(target-numbers[i]);
+           return result;
+       }
+       map.put(numbers[i],i+1);
+   }
+   return result;
+}
+
